@@ -8,3 +8,12 @@ export const listUniquePostService = async (slug) => {
     throw error;
   }
 };
+
+export const createPostService = async (data) => {
+  try {
+    const res = await axiosInstance.post(`/post`, data);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
