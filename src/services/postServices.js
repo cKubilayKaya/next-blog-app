@@ -28,3 +28,12 @@ export const likePostService = async (slug) => {
     throw error;
   }
 };
+
+export const deletePostService = async (slug) => {
+  try {
+    const res = await axiosInstance.delete(`/post/${slug}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};

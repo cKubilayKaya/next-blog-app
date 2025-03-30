@@ -10,3 +10,8 @@ body {
 button {
   cursor: pointer;
 }
+button:disabled {
+  background-color: #d3d3d3 !important; /* Gri renk */
+  cursor: not-allowed !important; /* İzin verilmeyen işaretçi */
+  border: 1px solid #ccc !important; /* Hafif gri border */
+}

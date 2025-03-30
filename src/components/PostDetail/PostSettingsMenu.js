@@ -1,9 +1,10 @@
+"use client";
 import React, { useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { SettingsIcon } from "../Icons/Icons";
-import RemoveCommentModal from "../modals/RemoveCommentModal";
+import RemovePostModal from "../modals/RemovePostModal";
 
-export default function CommentSettingsMenu({ commentId, setUpdatePosts }) {
+export default function PostSettingsMenu({ postSlug }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -12,7 +13,7 @@ export default function CommentSettingsMenu({ commentId, setUpdatePosts }) {
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <MenuButton className="cursor-pointer">
-            <SettingsIcon color="#000" size="size-5" />
+            <SettingsIcon color="#000" size="size-6" />
           </MenuButton>
         </div>
 
@@ -32,7 +33,7 @@ export default function CommentSettingsMenu({ commentId, setUpdatePosts }) {
           </div>
         </MenuItems>
       </Menu>
-      <RemoveCommentModal open={open} setOpen={setOpen} commentId={commentId} setUpdatePosts={setUpdatePosts} loading={loading} setLoading={setLoading} />
+      <RemovePostModal open={open} setOpen={setOpen} postSlug={postSlug} loading={loading} setLoading={setLoading} />
     </>
   );
 }

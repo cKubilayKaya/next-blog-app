@@ -60,7 +60,7 @@ export default function AddCommentForm({ postId, setUpdatePosts }) {
         />
 
         <div className="flex items-center justify-between">
-          <Button type="submit" isLoading={loading}>
+          <Button type="submit" isLoading={loading} disabled={loading}>
             Send
           </Button>
         </div>

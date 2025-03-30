@@ -65,7 +65,7 @@ export default function LoginForm() {
           <LinkElement href="/register" link>
             Don't have an account
           </LinkElement>
-          <Button type="submit" isLoading={loading}>
+          <Button type="submit" isLoading={loading} disabled={loading}>
             Login
           </Button>
         </div>

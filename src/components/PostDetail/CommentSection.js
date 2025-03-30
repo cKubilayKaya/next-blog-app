@@ -12,7 +12,7 @@ export default function CommentSection({ postDetail, setUpdatePosts }) {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <div className="mt-16">
+    <div className="mt-8">
       <AddCommentForm postId={postDetail?.id} setUpdatePosts={setUpdatePosts} />
       <h3 className="text-2xl mt-8">Comments</h3>
       <div className="flex flex-col gap-4 mt-8">

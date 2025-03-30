@@ -30,7 +30,6 @@ export default function CreatePostForm() {
     const fetchCategories = async () => {
       const { success, categories } = await listCategoriesService();
       if (success) {
-        console.log("test");
         setCategories(categories);
       }
     };

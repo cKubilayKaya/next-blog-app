@@ -17,7 +17,6 @@ export default function HomePage() {
     const fetchCategories = async () => {
       const { success, categories } = await listCategoriesService();
       if (success) {
-        console.log("test");
         setCategories(categories);
       }
     };
