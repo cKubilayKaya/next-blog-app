@@ -19,3 +19,12 @@ export const createPostService = async (data) => {
     throw error;
   }
 };
+
+export const likePostService = async (slug) => {
+  try {
+    const res = await axiosInstance.post(`/post/${slug}/like`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};

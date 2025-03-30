@@ -5,6 +5,7 @@ import addCommentSchema from "@/validations/addCommentSchema";
 import React, { useEffect } from "react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import toast from "react-hot-toast";
 
 export default function AddCommentForm({ postId, setUpdatePosts }) {
   const { formData, errors, touched, handleChange, handleFocus, setFormData, handleSubmit, loading } = useForm(
@@ -28,13 +29,14 @@ export default function AddCommentForm({ postId, setUpdatePosts }) {
     e.preventDefault();
     await handleSubmit(async () => {
       try {
-        const { success, comment } = await addCommentService(formData);
+        const { success } = await addCommentService(formData);
         if (success) {
           setUpdatePosts(Date.now());
           setFormData((prev) => ({
             ...prev,
             content: "",
           }));
+          toast.success("Comment added successfully.");
         }
       } catch (error) {
         const errorMessage = error?.response?.data?.message;

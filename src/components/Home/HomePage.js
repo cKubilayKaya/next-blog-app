@@ -11,6 +11,7 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("");
   const [posts, setPosts] = useState([]);
   const [pagination, setPagination] = useState([]);
+  const [updatePosts, setUpdatePosts] = useState(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -36,7 +37,7 @@ export default function HomePage() {
 
       fetchPosts();
     }
-  }, [categories]);
+  }, [categories, updatePosts]);
 
   useEffect(() => {
     if (params) {
@@ -51,7 +52,7 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-7xl p-6 lg:px-8">
       <CategoryWrapper params={params} categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-      <PostWrapper posts={posts} activeCategory={activeCategory} />
+      <PostWrapper posts={posts} activeCategory={activeCategory} setUpdatePosts={setUpdatePosts} />
     </div>
   );
 }

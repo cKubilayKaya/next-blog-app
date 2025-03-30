@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { useAuth } from "@/store/slices/authSlice";
 import { useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/Footer";
 
 const InterSans = Inter({
   variable: "--font-inter",
@@ -33,6 +34,7 @@ export default function ProvideLayout({ children }) {
         <Toaster position="top-right" reverseOrder={false} />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
