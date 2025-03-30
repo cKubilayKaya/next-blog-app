@@ -32,11 +32,13 @@ export default function Header() {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center">
-          <LinkElement href="/create-post" link>
-            Create Post
-          </LinkElement>
           {user ? (
-            <HeaderProfile username={user?.username} />
+            <>
+              <LinkElement href="/create-post" link>
+                Create Post
+              </LinkElement>
+              <HeaderProfile username={user?.username} />
+            </>
           ) : (
             <>
               <LinkElement href="/register" secondary>

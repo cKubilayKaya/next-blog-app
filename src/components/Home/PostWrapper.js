@@ -1,16 +1,12 @@
 "use client";
-
-import { HeartIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 export default function PostWrapper({ posts, activeCategory }) {
-  console.log(posts);
-
   return (
     <div className="h-full min-h-full min-w-[280px] border-l-gray-300 w-full pl-2">
       <div className="grid grid-cols-3 gap-8">
         {posts?.length >= 1 ? (
-          posts?.map(({ id, title, slug, excerpt, liked, author }) => (
+          posts?.map(({ id, title, slug, excerpt, liked, author, _count }) => (
             <div className="border border-gray-300 rounded-2xl" key={id}>
               <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="object-cover rounded-t-2xl" alt="" />
               <div className="flex flex-col justify-between gap-8 p-4">
@@ -47,7 +43,7 @@ export default function PostWrapper({ posts, activeCategory }) {
                       />
                     </svg>
 
-                    <span className="text-sm">3</span>
+                    <span className="text-sm">{_count?.comments}</span>
                   </button>
                 </div>
               </div>

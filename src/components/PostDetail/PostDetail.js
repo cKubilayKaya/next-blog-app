@@ -2,24 +2,36 @@
 import { listUniquePostService } from "@/services/postServices";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import AddCommentForm from "../forms/AddCommentForm";
+import dayjs from "dayjs";
+import { TrashIcon } from "../Icons/Icons";
+import { useSelector } from "react-redux";
+import { deleteCommentService } from "@/services/commentServices";
 
 export default function PostDetail() {
   const params = useParams();
   const [postDetail, setPostDetail] = useState({});
+  const { user } = useSelector((state) => state.auth);
+  const [updatePosts, setUpdatePosts] = useState(null);
 
   useEffect(() => {
     if (params?.postSlug) {
       const fetchPostDetail = async () => {
-        const { success, post } = await listUniquePostService(params?.postSlug);
+        const { success, post } = await listUniquePostService(params?.postSlug, true);
         if (success) {
           setPostDetail(post);
         }
       };
       fetchPostDetail();
     }
-  }, []);
+  }, [updatePosts]);
 
-  console.log(postDetail);
+  const removeComment = async (commentId) => {
+    const { success } = await deleteCommentService(commentId);
+    if (success) {
+      setUpdatePosts(Date.now());
+    }
+  };
 
   return (
     postDetail?.id && (
@@ -50,7 +62,7 @@ export default function PostDetail() {
               />
             </svg>
 
-            <span className="text-sm">3</span>
+            <span className="text-sm">{postDetail?._count?.comments}</span>
           </button>
         </div>
         <div className="mt-8 border-b border-b-gray-300 pb-4">
@@ -58,10 +70,37 @@ export default function PostDetail() {
         </div>
         <div className="flex items-center gap-2 mt-4">
           <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="w-10 h-10 rounded-full" alt="" />
-
           <div>
             <p className="text-sm">{postDetail?.author?.fullname}</p>
             <span className="text-sm text-gray-500">{postDetail?.author?.username}</span>
+          </div>
+        </div>
+        <div className="mt-16">
+          <AddCommentForm postId={postDetail?.id} setUpdatePosts={setUpdatePosts} />
+          <h3 className="text-2xl mt-8">Comments</h3>
+          <div className="flex flex-col gap-8 mt-8">
+            {postDetail?.comments?.map((comment) => (
+              <div className="border-b border-b-gray-300 pb-8" key={comment?.id}>
+                <div className="flex w-full justify-between">
+                  <div>
+                    <p>{comment?.content}</p>
+                    <p className="text-sm text-gray-600">{dayjs(comment?.createdAt).format("DD MMMM YYYY HH:mm")}</p>
+                  </div>
+                  {user?.email === comment?.author?.email && (
+                    <button className="p-2 rounded cursor-pointer bg-red-500" onClick={() => removeComment(comment?.id)}>
+                      <TrashIcon color="white" />
+                    </button>
+                  )}
+                </div>
+                <div className="flex items-center gap-2 mt-4">
+                  <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="w-10 h-10 rounded-full" alt="" />
+                  <div>
+                    <p className="text-sm">{comment?.author?.fullname}</p>
+                    <span className="text-sm text-gray-500">{comment?.author?.username}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

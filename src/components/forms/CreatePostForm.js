@@ -2,7 +2,7 @@
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import useForm from "@/hooks/useForm";
-import createPostSchema from "@/validations/loginSchema";
+import createPostSchema from "@/validations/createPostSchema";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import SelectBox from "../ui/SelectBox";
