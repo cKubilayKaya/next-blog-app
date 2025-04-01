@@ -10,13 +10,18 @@ export default function RemovePostModal({ open, setOpen, postSlug, loading, setL
   const router = useRouter();
 
   const removePost = async (postSlug) => {
-    setLoading(true);
-    const { success, message } = await deletePostService(postSlug);
-    if (success) {
-      setOpen(false);
-      toast.success(message);
+    try {
+      setLoading(true);
+      const { success, message } = await deletePostService(postSlug);
+      if (success) {
+        setOpen(false);
+        toast.success(message);
+        setLoading(false);
+        router.push("/");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error?.message);
       setLoading(false);
-      router.push("/");
     }
   };
 
