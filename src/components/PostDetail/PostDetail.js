@@ -7,11 +7,13 @@ import CommentSection from "./CommentSection";
 import dayjs from "dayjs";
 import LinkElement from "../ui/LinkElement";
 import PostSettingsMenu from "./PostSettingsMenu";
+import { useSelector } from "react-redux";
 
 export default function PostDetail() {
   const params = useParams();
   const [postDetail, setPostDetail] = useState({});
   const [updatePosts, setUpdatePosts] = useState(null);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (params?.postSlug) {
@@ -31,7 +33,7 @@ export default function PostDetail() {
         <div className="mb-8">
           <div className="flex justify-between">
             <h3 className="text-3xl">{postDetail?.title}</h3>
-            <PostSettingsMenu postSlug={postDetail?.slug} />
+            {user && user?.email === postDetail?.author?.email && <PostSettingsMenu postSlug={postDetail?.slug} />}
           </div>
           <p className="mt-4">{postDetail?.excerpt}</p>
           <p className="text-sm text-gray-400 mt-2">{dayjs(postDetail?.createdAt).format("DD MMMM YYYY • HH:mm")}</p>
