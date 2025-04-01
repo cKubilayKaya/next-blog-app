@@ -30,7 +30,7 @@ export default function PostDetail() {
 
   return (
     postDetail?.id && (
-      <div className="mx-auto max-w-7xl p-6 mt-16 lg:px-8">
+      <div className="mx-auto max-w-4xl p-6 mt-16 lg:px-8">
         <div className="mb-8">
           <div className="flex justify-between">
             <h3 className="text-3xl">{postDetail?.title}</h3>
@@ -38,6 +38,13 @@ export default function PostDetail() {
           </div>
           <p className="mt-4">{postDetail?.excerpt}</p>
           <p className="text-sm text-gray-400 mt-2">{dayjs(postDetail?.createdAt).format("DD MMMM YYYY • HH:mm")}</p>
+          <div className="flex items-center gap-1 mt-4">
+            {postDetail?.categories?.map((category) => (
+              <LinkElement href={`/category/${category?.slug}`} className="bg-indigo-100 p-2 px-4 rounded-full text-xs" link>
+                {category?.name}
+              </LinkElement>
+            ))}
+          </div>
         </div>
         <img src={imagePath(postDetail?.featuredImageUrl)} className="object-cover rounded-2xl w-full" alt="" />
         <PostLikeComment

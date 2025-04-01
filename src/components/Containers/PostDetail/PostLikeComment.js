@@ -3,13 +3,23 @@ import classNames from "classnames";
 import React from "react";
 import toast from "react-hot-toast";
 import { CommentIcon, HeartIcon, HeartIconFilled } from "../../Icons/Icons";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function PostLikeComment({ slug, isLiked, liked, _count, setUpdatePosts }) {
+  const { user } = useSelector((state) => state.auth);
+
+  const router = useRouter();
+
   const likePost = async (slug) => {
-    const { success, message } = await likePostService(slug);
-    if (success) {
-      setUpdatePosts(Date.now());
-      toast.success(message);
+    if (!user) {
+      router.push("/login");
+    } else {
+      const { success, message } = await likePostService(slug);
+      if (success) {
+        setUpdatePosts(Date.now());
+        toast.success(message);
+      }
     }
   };
 

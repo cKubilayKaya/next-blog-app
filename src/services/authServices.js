@@ -62,3 +62,16 @@ export const changePasswordService = async (data) => {
     throw error;
   }
 };
+
+export const tokenVerifyService = async (token) => {
+  try {
+    const res = await axiosInstance.get("/auth/token-verify", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
