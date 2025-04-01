@@ -9,6 +9,7 @@ import SelectBox from "../ui/SelectBox";
 import { useEffect, useState } from "react";
 import { listCategoriesService } from "@/services/categoryServices";
 import { createPostService } from "@/services/postServices";
+import InputFile from "../ui/InputFile";
 
 export default function CreatePostForm() {
   const [categoryData, setCategories] = useState();
@@ -20,6 +21,7 @@ export default function CreatePostForm() {
       content: "",
       categories: [],
       excerpt: "",
+      featuredImageUrl: "",
     },
     createPostSchema
   );
@@ -39,9 +41,26 @@ export default function CreatePostForm() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    const formObject = new FormData();
+
+    formObject.append("title", formData.title);
+    formObject.append("content", formData.content);
+    formObject.append("excerpt", formData.excerpt);
+
+    formData.categories.forEach((category) => {
+      formObject.append("categories[]", category);
+    });
+
+    if (formData.featuredImageUrl instanceof File) {
+      formObject.append("featuredImageUrl", formData.featuredImageUrl);
+    } else {
+      toast.error("Geçerli bir dosya seçilmedi!");
+    }
+
     await handleSubmit(async () => {
       try {
-        const { success } = await createPostService(formData);
+        const { success } = await createPostService(formObject);
         if (success) {
           router.push("/");
         }
@@ -101,7 +120,15 @@ export default function CreatePostForm() {
           selected={selected}
           setSelected={setSelected}
         />
-
+        <InputFile
+          label="Image"
+          name="featuredImageUrl"
+          // value={formData.featuredImageUrl}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          touched={touched?.featuredImageUrl}
+          errors={errors?.featuredImageUrl}
+        />
         <div className="flex items-center justify-between">
           <Button type="submit" isLoading={loading}>
             Create

@@ -12,6 +12,7 @@ const createPostSchema = Yup.object({
     .min(1, "At least one category is required.")
     .required("Categories is required."),
   excerpt: Yup.string().min(6, "Excerpt must be at least 6 characters long.").required("Excerpt is required."),
+  featuredImageUrl: Yup.string(),
 });
 
 export default createPostSchema;

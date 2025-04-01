@@ -1,15 +1,16 @@
 "use client";
 import Link from "next/link";
 import PostLikeComment from "../PostDetail/PostLikeComment";
+import imagePath from "@/utils/imagePath";
 
 export default function PostWrapper({ posts, activeCategory, setUpdatePosts }) {
   return (
     <div className="h-full min-h-full min-w-[280px] border-l-gray-300 w-full pl-2">
       <div className="grid grid-cols-3 gap-8">
         {posts?.length >= 1 ? (
-          posts?.map(({ id, title, slug, excerpt, liked, isLiked, author, _count }) => (
+          posts?.map(({ id, featuredImageUrl, title, slug, excerpt, liked, isLiked, author, _count }) => (
             <div className="flex flex-col border border-gray-300 rounded-2xl" key={id}>
-              <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="object-cover rounded-t-2xl" alt="" />
+              <img src={imagePath(featuredImageUrl)} className="rounded-t-2xl min-h-[250px] object-cover" alt="" />
               <div className="flex flex-1 justify-between flex-col gap-8 p-4">
                 <div>
                   <Link href={`/category/${activeCategory}/${slug}`} key={id} className="text-2xl hover:underline">
@@ -19,7 +20,7 @@ export default function PostWrapper({ posts, activeCategory, setUpdatePosts }) {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="w-10 h-10 rounded-full" alt="" />
+                    <img src="http://localhost:5000/uploads/posts/59e500ac-7767-4fb2-ac40-160eef0eeaf7.jpg" className="w-10 h-10 rounded-full" alt="" />
                     <div>
                       <p className="text-sm">{author?.fullname}</p>
                       <span className="text-sm text-gray-500">{author?.username}</span>

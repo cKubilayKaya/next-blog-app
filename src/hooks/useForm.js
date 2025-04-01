@@ -10,14 +10,17 @@ const useForm = (initialData, validationSchema) => {
   const [loading, setLoading] = useState(false); // Loading durumu burada
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, type, value, files } = e.target;
+
+    const fieldValue = type === "file" ? files[0] : value;
+
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: fieldValue,
     });
 
     if (touched[name]) {
-      validateField(name, value);
+      validateField(name, fieldValue);
     }
   };
 

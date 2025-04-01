@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import LinkElement from "../ui/LinkElement";
 import PostSettingsMenu from "./PostSettingsMenu";
 import { useSelector } from "react-redux";
+import imagePath from "@/utils/imagePath";
 
 export default function PostDetail() {
   const params = useParams();
@@ -38,7 +39,7 @@ export default function PostDetail() {
           <p className="mt-4">{postDetail?.excerpt}</p>
           <p className="text-sm text-gray-400 mt-2">{dayjs(postDetail?.createdAt).format("DD MMMM YYYY • HH:mm")}</p>
         </div>
-        <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="object-cover rounded-2xl w-full" alt="" />
+        <img src={imagePath(postDetail?.featuredImageUrl)} className="object-cover rounded-2xl w-full" alt="" />
         <PostLikeComment
           slug={postDetail?.slug}
           isLiked={postDetail?.isLiked}
@@ -50,7 +51,7 @@ export default function PostDetail() {
           <p>{postDetail?.content}</p>
         </div>
         <div className="flex items-center gap-2 mt-8">
-          <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="w-10 h-10 rounded-full object-cover" alt="" />
+          <img src="http://localhost:5000/uploads/posts/59e500ac-7767-4fb2-ac40-160eef0eeaf7.jpg" className="w-10 h-10 rounded-full object-cover" alt="" />
           <div>
             <LinkElement href="/" link>
               {postDetail?.author?.username}

@@ -3,9 +3,6 @@ import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 if (typeof window !== "undefined") {
@@ -14,6 +11,11 @@ if (typeof window !== "undefined") {
       const token = Cookies.get("token");
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
+      }
+      if (config.data instanceof FormData) {
+        config.headers["Content-Type"] = "multipart/form-data";
+      } else {
+        config.headers["Content-Type"] = "application/json";
       }
       return config;
     },
