@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import LinkElement from "./ui/LinkElement";
+import LinkElement from "./UI/LinkElement";
 import { useSelector } from "react-redux";
 import HeaderProfile from "./HeaderProfile";
 
@@ -37,7 +37,7 @@ export default function Header() {
               <LinkElement href="/create-post" link>
                 Create Post
               </LinkElement>
-              <HeaderProfile username={user?.username} />
+              <HeaderProfile fullname={user?.fullname} username={user?.username} />
             </>
           ) : (
             <>

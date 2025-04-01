@@ -1,5 +1,5 @@
 "use client";
-import LinkElement from "../ui/LinkElement";
+import LinkElement from "../../UI/LinkElement";
 
 export default function CategoryWrapper({ categories, activeCategory, setActiveCategory }) {
   return (

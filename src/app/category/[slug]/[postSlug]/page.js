@@ -1,4 +1,4 @@
-import PostDetail from "@/components/PostDetail/PostDetail";
+import PostDetail from "@/components/Containers/PostDetail/PostDetail";
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;

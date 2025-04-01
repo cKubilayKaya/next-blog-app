@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { SettingsIcon } from "../Icons/Icons";
-import RemoveCommentModal from "../modals/RemoveCommentModal";
+import { SettingsIcon } from "../../Icons/Icons";
+import RemoveCommentModal from "../../Modals/RemoveCommentModal";
 
 export default function CommentSettingsMenu({ commentId, setUpdatePosts }) {
   const [open, setOpen] = useState(false);

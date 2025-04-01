@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import PostLikeComment from "./PostLikeComment";
 import CommentSection from "./CommentSection";
 import dayjs from "dayjs";
-import LinkElement from "../ui/LinkElement";
+import LinkElement from "../../UI/LinkElement";
 import PostSettingsMenu from "./PostSettingsMenu";
 import { useSelector } from "react-redux";
 import imagePath from "@/utils/imagePath";
@@ -51,9 +51,13 @@ export default function PostDetail() {
           <p>{postDetail?.content}</p>
         </div>
         <div className="flex items-center gap-2 mt-8">
-          <img src="http://localhost:5000/uploads/posts/59e500ac-7767-4fb2-ac40-160eef0eeaf7.jpg" className="w-10 h-10 rounded-full object-cover" alt="" />
+          <img
+            src={postDetail?.author?.profileImageUrl ? imagePath(postDetail?.author?.profileImageUrl) : "/avatar-default.png"}
+            className="w-10 h-10 rounded-full object-cover"
+            alt=""
+          />
           <div>
-            <LinkElement href="/" link>
+            <LinkElement href={`/profile/${postDetail?.author?.username}`} link>
               {postDetail?.author?.username}
             </LinkElement>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import EditPostForm from "../forms/EditPostForm";
+import EditPostForm from "../../Forms/EditPostForm";
 import { useEffect, useState } from "react";
 import { listUniquePostService } from "@/services/postServices";
 

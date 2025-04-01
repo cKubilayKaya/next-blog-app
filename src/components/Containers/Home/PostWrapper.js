@@ -2,6 +2,7 @@
 import Link from "next/link";
 import PostLikeComment from "../PostDetail/PostLikeComment";
 import imagePath from "@/utils/imagePath";
+import LinkElement from "../../UI/LinkElement";
 
 export default function PostWrapper({ posts, activeCategory, setUpdatePosts }) {
   return (
@@ -20,10 +21,12 @@ export default function PostWrapper({ posts, activeCategory, setUpdatePosts }) {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <img src="http://localhost:5000/uploads/posts/59e500ac-7767-4fb2-ac40-160eef0eeaf7.jpg" className="w-10 h-10 rounded-full" alt="" />
+                    <img src={author?.profileImageUrl ? imagePath(author?.profileImageUrl) : "/avatar-default.png"} className="w-10 h-10 rounded-full" alt="" />
                     <div>
-                      <p className="text-sm">{author?.fullname}</p>
-                      <span className="text-sm text-gray-500">{author?.username}</span>
+                      <LinkElement href={`/profile/${author?.username}`} link>
+                        {author?.fullname}
+                      </LinkElement>
+                      <span className="text-sm text-gray-500 -mt-1 block">{author?.username}</span>
                     </div>
                   </div>
                   <PostLikeComment slug={slug} liked={liked} isLiked={isLiked} _count={_count} setUpdatePosts={setUpdatePosts} />

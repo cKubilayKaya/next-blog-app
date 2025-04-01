@@ -1,15 +1,15 @@
 "use client";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import Button from "@/components/UI/Button";
+import Input from "@/components/UI/Input";
 import useForm from "@/hooks/useForm";
 import createPostSchema from "@/validations/createPostSchema";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import SelectBox from "../ui/SelectBox";
+import SelectBox from "../UI/SelectBox";
 import { useEffect, useState } from "react";
 import { listCategoriesService } from "@/services/categoryServices";
 import { createPostService } from "@/services/postServices";
-import InputFile from "../ui/InputFile";
+import InputFile from "../UI/InputFile";
 
 export default function CreatePostForm() {
   const [categoryData, setCategories] = useState();
@@ -98,7 +98,6 @@ export default function CreatePostForm() {
         />
 
         <Input
-          type="excerpt"
           label="Excerpt"
           name="excerpt"
           value={formData.excerpt}

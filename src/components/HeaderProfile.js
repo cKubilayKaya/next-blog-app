@@ -1,9 +1,10 @@
 import { useAuth } from "@/store/slices/authSlice";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function HeaderProfile({ username }) {
+export default function HeaderProfile({ fullname, username }) {
   const { logoutAction } = useAuth();
   const router = useRouter();
 
@@ -11,7 +12,7 @@ export default function HeaderProfile({ username }) {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50  cursor-pointer">
-          {username}
+          {fullname}
           <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
         </MenuButton>
       </div>
@@ -22,9 +23,12 @@ export default function HeaderProfile({ username }) {
       >
         <div className="py-1">
           <MenuItem>
-            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden">
+            <Link
+              href={`/profile/${username}`}
+              className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+            >
               Profile
-            </a>
+            </Link>
           </MenuItem>
         </div>
         <div className="py-1">

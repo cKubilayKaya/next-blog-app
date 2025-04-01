@@ -1,8 +1,8 @@
 import React from "react";
-import AddCommentForm from "../forms/AddCommentForm";
+import AddCommentForm from "../../Forms/AddCommentForm";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import LinkElement from "../ui/LinkElement";
+import LinkElement from "../../UI/LinkElement";
 import relativeTime from "dayjs/plugin/relativeTime";
 import CommentSettingsMenu from "./CommentSettingsMenu";
 

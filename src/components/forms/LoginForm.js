@@ -1,7 +1,7 @@
 "use client";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import LinkElement from "@/components/ui/LinkElement";
+import Button from "@/components/UI/Button";
+import Input from "@/components/UI/Input";
+import LinkElement from "@/components/UI/LinkElement";
 import useForm from "@/hooks/useForm";
 import { loginService } from "@/services/authServices";
 import { useAuth } from "@/store/slices/authSlice";

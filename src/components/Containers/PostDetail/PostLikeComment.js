@@ -2,7 +2,7 @@ import { likePostService } from "@/services/postServices";
 import classNames from "classnames";
 import React from "react";
 import toast from "react-hot-toast";
-import { CommentIcon, HeartIcon, HeartIconFilled } from "../Icons/Icons";
+import { CommentIcon, HeartIcon, HeartIconFilled } from "../../Icons/Icons";
 
 export default function PostLikeComment({ slug, isLiked, liked, _count, setUpdatePosts }) {
   const likePost = async (slug) => {

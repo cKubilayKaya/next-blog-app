@@ -3,8 +3,8 @@ import useForm from "@/hooks/useForm";
 import { addCommentService } from "@/services/commentServices";
 import addCommentSchema from "@/validations/addCommentSchema";
 import React, { useEffect } from "react";
-import Input from "../ui/Input";
-import Button from "../ui/Button";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
 import toast from "react-hot-toast";
 
 export default function AddCommentForm({ postId, setUpdatePosts }) {

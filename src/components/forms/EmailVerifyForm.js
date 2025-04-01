@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import Button from "@/components/UI/Button";
+import Input from "@/components/UI/Input";
 import useForm from "@/hooks/useForm";
 import { emailVerifyService } from "@/services/authServices";
 import emailVerifySchema from "@/validations/emailVerifySchema";

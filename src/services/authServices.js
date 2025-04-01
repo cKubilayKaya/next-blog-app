@@ -18,15 +18,6 @@ export const registerService = async (data) => {
   }
 };
 
-export const updateProfileService = async (data) => {
-  try {
-    const res = await axiosInstance.put("/auth/profile", data);
-    return res.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
 export const meService = async () => {
   try {
     const res = await axiosInstance.get("/auth/me");

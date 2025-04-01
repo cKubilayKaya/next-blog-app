@@ -1,4 +1,4 @@
-import EmailVerifyForm from "@/components/forms/EmailVerifyForm";
+import EmailVerifyForm from "@/components/Forms/EmailVerifyForm";
 
 export default function EmailVerify() {
   return (

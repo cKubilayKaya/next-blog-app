@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { SettingsIcon } from "../Icons/Icons";
-import RemovePostModal from "../modals/RemovePostModal";
+import { SettingsIcon } from "../../Icons/Icons";
+import RemovePostModal from "../../Modals/RemovePostModal";
 import { useRouter } from "next/navigation";
 
 export default function PostSettingsMenu({ postSlug, categorySlug }) {

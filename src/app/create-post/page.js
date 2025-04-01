@@ -1,4 +1,4 @@
-import CreatePostForm from "@/components/forms/CreatePostForm";
+import CreatePostForm from "@/components/Forms/CreatePostForm";
 import React from "react";
 
 export default function CreatePost() {

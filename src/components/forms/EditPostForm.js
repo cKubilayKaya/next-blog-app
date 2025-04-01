@@ -1,15 +1,15 @@
 "use client";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import Button from "@/components/UI/Button";
+import Input from "@/components/UI/Input";
 import useForm from "@/hooks/useForm";
 import createPostSchema from "@/validations/createPostSchema";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import SelectBox from "../ui/SelectBox";
+import SelectBox from "../UI/SelectBox";
 import { useEffect, useState } from "react";
 import { listCategoriesService } from "@/services/categoryServices";
-import { createPostService, updatePostService } from "@/services/postServices";
-import InputFile from "../ui/InputFile";
+import { updatePostService } from "@/services/postServices";
+import InputFile from "../UI/InputFile";
 import imagePath from "@/utils/imagePath";
 
 export default function EditPostForm({ postDetail }) {
@@ -140,7 +140,7 @@ export default function EditPostForm({ postDetail }) {
                 onClick={() =>
                   setFormData((prev) => ({
                     ...prev,
-                    featuredImageUrl: "",
+                    featuredImageUrl: null,
                   }))
                 }
               >
