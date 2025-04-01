@@ -7,12 +7,19 @@ const useForm = (initialData, validationSchema) => {
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
-  const [loading, setLoading] = useState(false); // Loading durumu burada
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, type, value, files } = e.target;
 
-    const fieldValue = type === "file" ? files[0] : value;
+    let fieldValue;
+    if (type === "file") {
+      fieldValue = files[0];
+    } else if (type === "select-multiple") {
+      fieldValue = value;
+    } else {
+      fieldValue = value;
+    }
 
     setFormData({
       ...formData,

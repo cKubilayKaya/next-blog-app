@@ -23,6 +23,7 @@ export default function InputFile({ label, name, touched, errors, ...props }) {
         })}
         {...props}
       />
+      <p className="mt-1 text-xs text-gray-500 font-light">PNG, JPG or JPEG (MAX. 2MB)</p>
       {touched && errors && <span className={classNames({ "text-xs text-red-500": errors })}>{errors}</span>}
     </div>
   );

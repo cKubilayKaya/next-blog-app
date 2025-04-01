@@ -34,7 +34,7 @@ export default function PostDetail() {
         <div className="mb-8">
           <div className="flex justify-between">
             <h3 className="text-3xl">{postDetail?.title}</h3>
-            {user && user?.email === postDetail?.author?.email && <PostSettingsMenu postSlug={postDetail?.slug} />}
+            {user && user?.email === postDetail?.author?.email && <PostSettingsMenu categorySlug={params?.slug} postSlug={postDetail?.slug} />}
           </div>
           <p className="mt-4">{postDetail?.excerpt}</p>
           <p className="text-sm text-gray-400 mt-2">{dayjs(postDetail?.createdAt).format("DD MMMM YYYY • HH:mm")}</p>

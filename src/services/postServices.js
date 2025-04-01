@@ -20,6 +20,15 @@ export const createPostService = async (data) => {
   }
 };
 
+export const updatePostService = async (slug, data) => {
+  try {
+    const res = await axiosInstance.patch(`/post/${slug}`, data);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const likePostService = async (slug) => {
   try {
     const res = await axiosInstance.post(`/post/${slug}/like`);

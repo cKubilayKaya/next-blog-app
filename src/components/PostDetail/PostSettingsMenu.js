@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { SettingsIcon } from "../Icons/Icons";
 import RemovePostModal from "../modals/RemovePostModal";
+import { useRouter } from "next/navigation";
 
-export default function PostSettingsMenu({ postSlug }) {
+export default function PostSettingsMenu({ postSlug, categorySlug }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -24,7 +26,15 @@ export default function PostSettingsMenu({ postSlug }) {
           <div className="py-1">
             <MenuItem>
               <button
-                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                className="block text-left w-full px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                onClick={() => router.push(`/category/${categorySlug}/${postSlug}/edit`)}
+              >
+                Edit
+              </button>
+            </MenuItem>
+            <MenuItem>
+              <button
+                className="block text-left w-full px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 onClick={() => setOpen(true)}
               >
                 Remove
