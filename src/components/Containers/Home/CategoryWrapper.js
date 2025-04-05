@@ -9,8 +9,8 @@ export default function CategoryWrapper({ categories, activeCategory, setActiveC
           key={id}
           onClick={() => setActiveCategory(slug)}
           href={`/category/${slug}`}
-          primary={slug === activeCategory}
-          secondary={slug !== activeCategory}
+          primaryCircle={slug === activeCategory}
+          secondaryCircle={slug !== activeCategory}
         >
           {name} ({_count?.posts})
         </LinkElement>

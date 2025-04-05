@@ -4,6 +4,7 @@ import CategoryWrapper from "./CategoryWrapper";
 import PostWrapper from "./PostWrapper";
 import { useParams } from "next/navigation";
 import { listCategoriesService, listPostsByCategory } from "@/services/categoryServices";
+import HomeBanner from "./HomeBanner";
 
 export default function HomePage() {
   const params = useParams();
@@ -51,6 +52,7 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-7xl p-6 lg:px-8">
       <CategoryWrapper params={params} categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+      <HomeBanner category={categories?.find((category) => category?.slug === activeCategory)} />
       <PostWrapper posts={posts} activeCategory={activeCategory} setUpdatePosts={setUpdatePosts} />
     </div>
   );

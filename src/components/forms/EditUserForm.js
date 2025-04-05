@@ -133,7 +133,9 @@ export default function EditUserForm({ profileDetail }) {
           <div>
             <p className="block text-sm/6 font-medium text-gray-900 mb-2">Profile Image</p>
             <div className="flex items-center gap-2">
-              <p className="bg-gray-200 p-2 px-4 h-[40px] text-sm rounded">{profileDetail?.profileImageUrl?.replace("/uploads/posts/", "")}</p>
+              {profileDetail?.profileImageUrl && (
+                <p className="bg-gray-200 p-2 px-4 h-[40px] text-sm rounded">{profileDetail?.profileImageUrl?.replace("/uploads/posts/", "")}</p>
+              )}
               <Button
                 variant="cancel"
                 onClick={() =>

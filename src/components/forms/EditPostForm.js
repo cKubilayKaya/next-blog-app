@@ -134,7 +134,9 @@ export default function EditPostForm({ postDetail }) {
           <div>
             <p className="block text-sm/6 font-medium text-gray-900 mb-2">Image</p>
             <div className="flex items-center gap-2">
-              <p>{postDetail?.featuredImageUrl?.replace("/uploads/posts/", "")}</p>
+              {postDetail?.featuredImageUrl && (
+                <p className="bg-gray-200 p-2 px-4 h-[40px] text-sm rounded">{postDetail?.featuredImageUrl?.replace("/uploads/posts/", "")}</p>
+              )}
               <Button
                 variant="cancel"
                 onClick={() =>
