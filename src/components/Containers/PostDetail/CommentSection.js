@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import LinkElement from "../../UI/LinkElement";
 import relativeTime from "dayjs/plugin/relativeTime";
 import CommentSettingsMenu from "./CommentSettingsMenu";
+import imagePath from "@/utils/imagePath";
 
 dayjs.extend(relativeTime);
 
@@ -24,7 +25,7 @@ export default function CommentSection({ postDetail, setUpdatePosts }) {
                 {user?.email === comment?.author?.email && <CommentSettingsMenu commentId={comment?.id} setUpdatePosts={setUpdatePosts} />}
               </div>
               <div className="flex items-center gap-2 mt-4">
-                <img src="https://www.hisglobal.com.tr/assets/images/1641278654.jpg" className="w-6 h-6 rounded-full" alt="" />
+                <img src={imagePath(comment?.author?.profileImageUrl)} className="w-6 h-6 rounded-full" alt="" />
                 <LinkElement href={`/profile/${comment?.author?.username}`} link>
                   {comment?.author?.username}
                 </LinkElement>
