@@ -27,7 +27,7 @@ export default function PostSettingsMenu({ postSlug, categorySlug }) {
             <MenuItem>
               <button
                 className="block text-left w-full px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                onClick={() => router.push(`/category/${categorySlug}/${postSlug}/edit`)}
+                onClick={() => router.push(`/${postSlug}/edit`)}
               >
                 Edit
               </button>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProfileCard from "./ProfileCard";
 import { getUserDataService } from "@/services/userServices";
 import { useParams } from "next/navigation";
+import ProfilePosts from "./ProfilePosts";
 
 export default function ProfileContainer() {
   const params = useParams();
@@ -23,6 +24,7 @@ export default function ProfileContainer() {
       {profile && (
         <>
           <ProfileCard profile={profile} />
+          <ProfilePosts profile={profile} />
         </>
       )}
     </div>

@@ -9,6 +9,15 @@ export const listCategoriesService = async () => {
   }
 };
 
+export const listUniqueCategoryService = async (slug) => {
+  try {
+    const res = await axiosInstance.get(`/category/${slug}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const listPostsByCategory = async (slug) => {
   try {
     const res = await axiosInstance.get(`/category/${slug}/posts`);

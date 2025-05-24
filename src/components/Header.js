@@ -13,7 +13,7 @@ export default function Header() {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <header className="bg-white border-b border-b-gray-200 sticky top-0">
+    <header className="bg-white border-b border-b-gray-200 sticky top-0 z-50">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 flex">

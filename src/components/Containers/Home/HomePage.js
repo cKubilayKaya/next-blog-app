@@ -53,7 +53,7 @@ export default function HomePage() {
     <div className="mx-auto max-w-7xl p-6 lg:px-8">
       <CategoryWrapper params={params} categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
       <HomeBanner category={categories?.find((category) => category?.slug === activeCategory)} />
-      <PostWrapper posts={posts} activeCategory={activeCategory} setUpdatePosts={setUpdatePosts} />
+      <PostWrapper posts={posts} setUpdatePosts={setUpdatePosts} />
     </div>
   );
 }
